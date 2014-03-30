@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 Mar, 2014 6:29:53 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="SupplierTable" table="supplier_table" catalog="itradb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="destinationTable" class="DestinationTable" fetch="select">
+            <column name="supplier_company_city" />
+        </many-to-one>
+        <many-to-one name="countryTable" class="CountryTable" fetch="select">
+            <column name="supplier_company_country" />
+        </many-to-one>
+        <property name="supplierName" type="string">
+            <column name="supplier_name" length="40" />
+        </property>
+        <property name="supplierCompany" type="string">
+            <column name="supplier_company" length="40" />
+        </property>
+        <property name="supplierDescription" type="string">
+            <column name="supplier_description" length="300" />
+        </property>
+        <property name="supplierPanNo" type="string">
+            <column name="supplier_pan_no" length="10" />
+        </property>
+        <property name="supplierBankAccNo" type="java.lang.Integer">
+            <column name="supplier_bank_acc_no" />
+        </property>
+        <property name="supplierBankDetails" type="string">
+            <column name="supplier_bank_details" length="200" />
+        </property>
+        <property name="supplierContactPerson" type="string">
+            <column name="supplier_contact_person" length="40" />
+        </property>
+        <property name="supplierContactPersonNumber" type="java.lang.Integer">
+            <column name="supplier_contact_person_number" />
+        </property>
+        <property name="supplierContactEmail" type="string">
+            <column name="supplier_contact_email" length="40" />
+        </property>
+        <property name="supplierCompanyAddress" type="string">
+            <column name="supplier_company_address" length="300" />
+        </property>
+        <property name="supplierCompanyContactNumber" type="java.lang.Integer">
+            <column name="supplier_company_contact_number" />
+        </property>
+        <property name="supplierCompanyEmail" type="string">
+            <column name="supplier_company_email" length="40" />
+        </property>
+        <set name="packageTables" table="package_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="package_supplier" />
+            </key>
+            <one-to-many class="PackageTable" />
+        </set>
+    </class>
+</hibernate-mapping>

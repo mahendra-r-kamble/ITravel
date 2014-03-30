@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<body>
+	<h:form>
+		<p:panel header="Package Details">
+			<h:messages errorClass="error" />
+			<h:panelGrid columns="2" columnClasses="label, value"
+				styleClass="grid">
+				<h:outputText value="Package Name: *" />
+				<p:inputText required="true" label="Package Name"
+					value="#{packageWizard.packageTableManagedBean.packageName}" />
+
+				<h:outputText value="Number of Days: *" />
+				<p:inputText required="true" label="Number of Days"
+					value="#{packageWizard.packageTableManagedBean.numberOfDays}" />
+
+				<h:outputText value="Number of Nights: *" />
+				<p:inputText required="true" label="Number of Nights"
+					value="#{packageWizard.packageTableManagedBean.numberOfNights}" />
+
+				<h:outputText value="Valid From: " />
+				<p:calendar
+					value="#{packageWizard.packageTableManagedBean.validFrom}"
+					mode="inline" id="popupCal1" />
+
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+</body>
+</html>

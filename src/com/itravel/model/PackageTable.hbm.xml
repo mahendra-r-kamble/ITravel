@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 Mar, 2014 6:29:53 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="PackageTable" table="package_table" catalog="itradb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="themeTable" class="ThemeTable" fetch="select">
+            <column name="theme" />
+        </many-to-one>
+        <many-to-one name="supplierTable" class="SupplierTable" fetch="select">
+            <column name="package_supplier" />
+        </many-to-one>
+        <many-to-one name="itineraryTable" class="ItineraryTable" fetch="select">
+            <column name="itinerary_id" />
+        </many-to-one>
+        <many-to-one name="itineraryTypeLookupTable" class="ItineraryTypeLookupTable" fetch="select">
+            <column name="itinerary_type" />
+        </many-to-one>
+        <many-to-one name="destinationTable" class="DestinationTable" fetch="select">
+            <column name="package_destinations" not-null="true" />
+        </many-to-one>
+        <many-to-one name="packageBudgetLookupTable" class="PackageBudgetLookupTable" fetch="select">
+            <column name="package_budget" />
+        </many-to-one>
+        <many-to-one name="currencyLookupTable" class="CurrencyLookupTable" fetch="select">
+            <column name="package_currency" />
+        </many-to-one>
+        <many-to-one name="countryTable" class="CountryTable" fetch="select">
+            <column name="country" not-null="true" />
+        </many-to-one>
+        <many-to-one name="packageTypeLookupTable" class="PackageTypeLookupTable" fetch="select">
+            <column name="package_type" not-null="true" />
+        </many-to-one>
+        <many-to-one name="hotelTable" class="HotelTable" fetch="select">
+            <column name="package_hotels" />
+        </many-to-one>
+        <many-to-one name="packageCategoryLookupTable" class="PackageCategoryLookupTable" fetch="select">
+            <column name="package_category" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mealPlanLookupTable" class="MealPlanLookupTable" fetch="select">
+            <column name="meal_plan" />
+        </many-to-one>
+        <property name="packageId" type="string">
+            <column name="package_id" length="20" not-null="true" />
+        </property>
+        <property name="packageName" type="string">
+            <column name="package_name" length="40" not-null="true" />
+        </property>
+        <property name="numberOfNights" type="int">
+            <column name="number_of_nights" not-null="true" />
+        </property>
+        <property name="numberOfDays" type="int">
+            <column name="number_of_days" not-null="true" />
+        </property>
+        <property name="packageDescription" type="string">
+            <column name="package_description" length="300" not-null="true" />
+        </property>
+        <property name="bestSeason" type="string">
+            <column name="best_season" length="40" />
+        </property>
+        <property name="validFrom" type="date">
+            <column name="valid_from" length="10" not-null="true" />
+        </property>
+        <property name="validTo" type="date">
+            <column name="valid_to" length="10" not-null="true" />
+        </property>
+        <property name="bookingFrom" type="date">
+            <column name="booking_from" length="10" not-null="true" />
+        </property>
+        <property name="bookingTo" type="date">
+            <column name="booking_to" length="10" not-null="true" />
+        </property>
+        <property name="packageHighlights" type="string">
+            <column name="package_highlights" length="300" not-null="true" />
+        </property>
+        <property name="termsAndConditions" type="string">
+            <column name="terms_and_conditions" length="1000" not-null="true" />
+        </property>
+        <property name="packageInclusions" type="string">
+            <column name="package_inclusions" length="300" not-null="true" />
+        </property>
+        <property name="packageExclusions" type="string">
+            <column name="package_exclusions" length="300" not-null="true" />
+        </property>
+        <property name="servicesId" type="int">
+            <column name="services_id" not-null="true" />
+        </property>
+        <property name="cancellationPolicy" type="string">
+            <column name="cancellation_policy" length="300" not-null="true" />
+        </property>
+        <property name="packageAmenities" type="string">
+            <column name="package_amenities" length="300" not-null="true" />
+        </property>
+        <property name="packageStatus" type="java.lang.Integer">
+            <column name="package_status" />
+        </property>
+        <property name="originPoints" type="java.lang.Integer">
+            <column name="origin_points" />
+        </property>
+        <set name="priceTables" table="price_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="package_id" />
+            </key>
+            <one-to-many class="PriceTable" />
+        </set>
+        <set name="servicesLookupTables" table="services_lookup_table" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="package_id" />
+            </key>
+            <one-to-many class="ServicesLookupTable" />
+        </set>
+    </class>
+</hibernate-mapping>

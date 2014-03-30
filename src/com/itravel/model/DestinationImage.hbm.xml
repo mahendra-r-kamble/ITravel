@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 Mar, 2014 6:29:53 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="DestinationImage" table="destination_image" catalog="itradb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="destinationTable" class="DestinationTable" fetch="select">
+            <column name="destination_id" />
+        </many-to-one>
+        <property name="destinationImage" type="binary">
+            <column name="destination_image" />
+        </property>
+    </class>
+</hibernate-mapping>

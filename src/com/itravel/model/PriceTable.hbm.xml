@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 Mar, 2014 6:29:53 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="PriceTable" table="price_table" catalog="itradb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="packageTable" class="PackageTable" fetch="select">
+            <column name="package_id" />
+        </many-to-one>
+        <property name="defaultCity" type="java.lang.Integer">
+            <column name="default_city" />
+        </property>
+        <property name="city" type="string">
+            <column name="city" length="20" />
+        </property>
+        <property name="adultSingleSharing" type="java.lang.Double">
+            <column name="adult_single_sharing" precision="22" scale="0" />
+        </property>
+        <property name="adultTwinSharing" type="java.lang.Double">
+            <column name="adult_twin_sharing" precision="22" scale="0" />
+        </property>
+        <property name="adultTripleSharing" type="java.lang.Double">
+            <column name="adult_triple_sharing" precision="22" scale="0" />
+        </property>
+        <property name="childWithBed" type="java.lang.Double">
+            <column name="child_with_bed" precision="22" scale="0" />
+        </property>
+        <property name="childWithoutBed" type="java.lang.Double">
+            <column name="child_without_bed" precision="22" scale="0" />
+        </property>
+        <property name="infant" type="java.lang.Double">
+            <column name="infant" precision="22" scale="0" />
+        </property>
+        <property name="extraBed" type="java.lang.Double">
+            <column name="extra_bed" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

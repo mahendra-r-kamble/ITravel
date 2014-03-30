@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26 Mar, 2014 6:29:53 AM by Hibernate Tools 4.0.0 -->
+<hibernate-mapping>
+    <class name="ActivityTable" table="activity_table" catalog="itradb">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="destinationTable" class="DestinationTable" fetch="select">
+            <column name="activity_destination" />
+        </many-to-one>
+        <property name="activityName" type="string">
+            <column name="activity_name" length="40" />
+        </property>
+        <property name="activityDescription" type="string">
+            <column name="activity_description" length="300" />
+        </property>
+        <property name="activityMultiImageId" type="java.lang.Integer">
+            <column name="activity_multi_image_id" />
+        </property>
+        <property name="activityVideo" type="string">
+            <column name="activity_video" length="200" />
+        </property>
+        <set name="activityImages" table="activity_image" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="activity_id" />
+            </key>
+            <one-to-many class="ActivityImage" />
+        </set>
+    </class>
+</hibernate-mapping>

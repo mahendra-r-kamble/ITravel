@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Welcome to ITravel</title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				Add Package
+			</f:facet>
+			<h:outputText value="Package Name: *" />
+			<p:inputText required="true" label="Package Name"
+				value="#{packageWizard.packageTableManagedBean.packageName}" />
+
+			<h:outputText value="Package Category: " />
+			<p:selectOneMenu
+				value="#{packageWizard.packageTableManagedBean.selectedPackage}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems
+					value="#{packageWizard.packageTableManagedBean.selectedPackageCategory}" />
+			</p:selectOneMenu>
+
+			<h:outputText value="Number of Days: *" />
+			<p:inputText required="true" label="Number of Days"
+				value="#{packageWizard.packageTableManagedBean.numberOfDays}" />
+
+			<h:outputText value="Number of Nights: *" />
+			<p:inputText required="true" label="Number of Nights"
+				value="#{packageWizard.packageTableManagedBean.numberOfNights}" />
+				
+			<h:outputText value="Theme: " />
+			<p:selectOneMenu
+				value="#{packageWizard.packageTableManagedBean.theme}">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems
+					value="#{packageWizard.packageTableManagedBean.theme}" />
+			</p:selectOneMenu>
+
+			<h:outputText value="Package Description: " />
+			<p:editor id="packageDescription"
+				value="#{packageWizard.packageTableManagedBean.packageDescription}"
+				width="400" />
+
+			<h:outputText value="Valid From: " />
+			<p:calendar
+				value="#{packageWizard.packageTableManagedBean.validFrom}"
+				id="validFrom" />
+
+			<h:outputText value="Valid To: " />
+			<p:calendar value="#{packageWizard.packageTableManagedBean.validTo}"
+				id="validTo" />
+
+			<h:outputText value="Booking From: " />
+			<p:calendar
+				value="#{packageWizard.packageTableManagedBean.bookingFrom}"
+				id="bookingFrom" />
+
+			<h:outputText value="Booking To: " />
+			<p:calendar
+				value="#{packageWizard.packageTableManagedBean.bookingTo}"
+				id="bookingTo" />
+
+			<h:outputText value="Package Highlights: " />
+			<p:editor id="editor2"
+				value="#{packageWizard.packageTableManagedBean.packageHighlights}"
+				width="400" />
+
+			<h:outputText value="Package Inclusions: " />
+			<p:editor id="editor3"
+				value="#{packageWizard.packageTableManagedBean.packageInclusions}"
+				width="400" />
+
+			<h:outputText value="Package Exclusions: " />
+			<p:editor id="editor4"
+				value="#{packageWizard.packageTableManagedBean.packageExclusions}"
+				width="400" />
+
+			<h:outputText value="Terms and Conditions: *" />
+			<p:editor id="termsAndConditions"
+				value="#{packageWizard.packageTableManagedBean.termsAndConditions}"
+				width="400" />
+
+			<h:outputText value="Services Radio: " />
+			<p:selectOneRadio id="options"
+				value="#{packageWizard.packageTableManagedBean.servicesLookupTables}">
+				<f:selectItem itemLabel="Option 1" itemValue="1" />
+				<f:selectItem itemLabel="Option 2" itemValue="2" />
+				<f:selectItem itemLabel="Option 3" itemValue="3" />
+			</p:selectOneRadio>
+
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>
