@@ -1,13 +1,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-<h:head><title>Welcome to Java Beat  for seeing PrimeFaces_Spring_Hibernate_Project</title></h:head>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Welcome to ITravel</title>
+</h:head>
 <h:body>
-    <h:form>
-        <table>
-        Hello 
-        </table>
-    </h:form>
+	<h:form>
+		<table>
+			Hello
+			<h:outputText value="Package Name: *" />
+			<p:editor />
+
+			<h:outputText value="Valid From: " />
+			<p:calendar
+				value="#{packageWizard.packageTableManagedBean.validFrom}"
+				mode="inline" id="popupCal1" />
+		</table>
+	</h:form>
 </h:body>
 </html>
