@@ -9,5 +9,8 @@
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/itradb</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <mapping resource="com/itravel/hbm/PackageTable.hbm.xml"/>
+        <mapping resource="com/itravel/hbm/PackageCategoryLookupTable.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,5 +1,4 @@
 package com.itravel.model;
-// default package
 // Generated 26 Mar, 2014 6:29:53 AM by Hibernate Tools 4.0.0
 
 import java.util.HashSet;

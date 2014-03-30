@@ -13,6 +13,7 @@ import javax.faces.bean.RequestScoped;
 
 import org.springframework.dao.DataAccessException;
 
+import com.itravel.dao.PackageCategoryDAO;
 import com.itravel.model.CountryTable;
 import com.itravel.model.CurrencyLookupTable;
 import com.itravel.model.DestinationTable;
@@ -26,6 +27,7 @@ import com.itravel.model.PackageTable;
 import com.itravel.model.PackageTypeLookupTable;
 import com.itravel.model.SupplierTable;
 import com.itravel.model.ThemeTable;
+import com.itravel.service.PackageCategoryService;
 import com.itravel.service.PackageTableService;
 
 @ManagedBean(name="packageTableMB")
@@ -39,8 +41,16 @@ public class PackageTableManagedBean implements Serializable {
     //Spring PackageTable Service is injected...
     @ManagedProperty(value="#{PackageTableService}")
     PackageTableService packageTableService;
-    
     List<PackageTable> packageTableList;
+    
+    @ManagedProperty(value="#{PackageCategoryService}")
+    PackageCategoryService packageCategoryService;
+    List<PackageCategoryLookupTable> packageCategory;
+    
+    private PackageCategoryLookupTable selectedPackageCategory;
+    
+    List<ThemeTable> theme;
+    private ThemeTable selectedTheme;
     
     private Integer id;
 	private ThemeTable themeTable;
@@ -49,11 +59,11 @@ public class PackageTableManagedBean implements Serializable {
 	private ItineraryTypeLookupTable itineraryTypeLookupTable;
 	private DestinationTable destinationTable;
 	private PackageBudgetLookupTable packageBudgetLookupTable;
+	private PackageCategoryLookupTable packageCategoryLookupTable;
 	private CurrencyLookupTable currencyLookupTable;
 	private CountryTable countryTable;
 	private PackageTypeLookupTable packageTypeLookupTable;
 	private HotelTable hotelTable;
-	private PackageCategoryLookupTable packageCategoryLookupTable;
 	private MealPlanLookupTable mealPlanLookupTable;
 	private String packageId;
 	private String packageName;
@@ -79,6 +89,98 @@ public class PackageTableManagedBean implements Serializable {
 	private int selectedServices;
 	private int selectedPackage;
 	
+	/**
+	 * @return the packageCategoryService
+	 */
+	public PackageCategoryService getPackageCategoryService() {
+		return packageCategoryService;
+	}
+
+	/**
+	 * @param packageCategoryService the packageCategoryService to set
+	 */
+	public void setPackageCategoryService(
+			PackageCategoryService packageCategoryService) {
+		this.packageCategoryService = packageCategoryService;
+	}
+
+	public PackageTableManagedBean() {
+	}
+
+	/**
+	 * @return the packageCategory
+	 */
+	public List<PackageCategoryLookupTable> getPackageCategory() {
+		packageCategory = new ArrayList<PackageCategoryLookupTable>();
+		packageCategory.addAll(getPackageCategoryService().getPackageCategoryLookupTables());
+		return packageCategory;
+	}
+
+	/**
+	 * @param packageCategory the packageCategory to set
+	 */
+	public void setPackageCategory(List<PackageCategoryLookupTable> packageCategory) {
+		this.packageCategory = packageCategory;
+	}
+
+	/**
+	 * @return the selectedPackageCategory
+	 */
+	public PackageCategoryLookupTable getSelectedPackageCategory() {
+		return selectedPackageCategory;
+	}
+
+	/**
+	 * @param selectedPackageCategory the selectedPackageCategory to set
+	 */
+	public void setSelectedPackageCategory(
+			PackageCategoryLookupTable selectedPackageCategory) {
+		this.selectedPackageCategory = selectedPackageCategory;
+	}
+
+	/**
+	 * @return the theme
+	 */
+	public List<ThemeTable> getTheme() {
+		return theme;
+	}
+
+	/**
+	 * @param theme the theme to set
+	 */
+	public void setTheme(List<ThemeTable> theme) {
+		this.theme = theme;
+	}
+
+	/**
+	 * @return the selectedTheme
+	 */
+	public ThemeTable getSelectedTheme() {
+		return selectedTheme;
+	}
+
+	/**
+	 * @param selectedTheme the selectedTheme to set
+	 */
+	public void setSelectedTheme(ThemeTable selectedTheme) {
+		this.selectedTheme = selectedTheme;
+	}
+
+	/**
+	 * @return the packageCategoryLookupTable
+	 */
+	public PackageCategoryLookupTable getPackageCategoryLookupTable() {
+		return packageCategoryLookupTable;
+	}
+
+	/**
+	 * @param packageCategoryLookupTable the packageCategoryLookupTable to set
+	 */
+	public void setPackageCategoryLookupTable(
+			PackageCategoryLookupTable packageCategoryLookupTable) {
+		this.packageCategoryLookupTable = packageCategoryLookupTable;
+	}
+
 	/**
      * Add PackageTable
      *
@@ -302,21 +404,6 @@ public class PackageTableManagedBean implements Serializable {
 	 */
 	public void setHotelTable(HotelTable hotelTable) {
 		this.hotelTable = hotelTable;
-	}
-
-	/**
-	 * @return the packageCategoryLookupTable
-	 */
-	public PackageCategoryLookupTable getPackageCategoryLookupTable() {
-		return packageCategoryLookupTable;
-	}
-
-	/**
-	 * @param packageCategoryLookupTable the packageCategoryLookupTable to set
-	 */
-	public void setPackageCategoryLookupTable(
-			PackageCategoryLookupTable packageCategoryLookupTable) {
-		this.packageCategoryLookupTable = packageCategoryLookupTable;
 	}
 
 	/**
